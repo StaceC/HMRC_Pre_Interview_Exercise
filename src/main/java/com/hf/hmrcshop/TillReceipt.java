@@ -104,7 +104,7 @@ public class TillReceipt {
     /**
      * Calculate the total discounts from offers in the receipt.
      */
-    public BigDecimal calculateTotalDiscount() {
+    public BigDecimal calculateDiscount() {
 
         BigDecimal discount = new BigDecimal("0.00");
 

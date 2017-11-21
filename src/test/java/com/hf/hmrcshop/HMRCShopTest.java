@@ -127,7 +127,7 @@ public class HMRCShopTest
     }
 
     /**
-     *
+     * Test THREE_FOR_TWO discount mechanics
      */
      public void test_THREE_FOR_TWO_DiscountOffer()
      {
@@ -154,5 +154,38 @@ public class HMRCShopTest
         assertEquals(new BigDecimal("23.25"),
             ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 279));
      }
+
+     /**
+      *  Test TillItem discount method
+      */
+      public void testTillReceiptAddOfferAndDiscountMethods()
+      {
+          // Add items to basket
+          ArrayList<ShopItem> items = new ArrayList<ShopItem>();
+          items.add(HMRCShopApp.ORANGE);
+          items.add(HMRCShopApp.ORANGE);
+          items.add(HMRCShopApp.ORANGE);
+          items.add(HMRCShopApp.APPLE);
+          items.add(HMRCShopApp.APPLE);
+
+          BigDecimal expectedTotal = new BigDecimal("1.10");
+
+          TillReceipt receipt = new TillReceipt();
+          receipt.addItems(items);
+
+          // Add offers to baset
+          receipt.addOffer(HMRCShopApp.ORANGE, ItemOffer.THREE_FOR_TWO);
+          receipt.addOffer(HMRCShopApp.APPLE, ItemOffer.BUY_1_GET_1_FREE);
+
+          // Calculate discount price = total - discount
+          BigDecimal discountedTotal =
+              receipt.calculateTotal().subtract(receipt.calculateDiscount());
+
+          assertEquals(expectedTotal, discountedTotal);
+
+
+      }
+
+
 
 }
