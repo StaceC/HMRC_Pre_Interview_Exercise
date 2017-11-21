@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class HMRCShopTest
     extends TestCase
 {
+
     /**
      * Create the test case
      *
@@ -99,6 +100,59 @@ public class HMRCShopTest
         receipt.addItem(apple);
         receipt.addItem(apple);
         assertEquals(expectedThirdTotalPrice, receipt.calculateTotal());
+    }
+
+    /**
+     * Test ItemOffer Enum
+     */
+    public void test_BUY_1_GET_1_FREE_Discount()
+    {
+
+        // One apple, no discounts
+        assertEquals(new BigDecimal("0.00"),
+            ItemOffer.BUY_1_GET_1_FREE.calculateItemDiscount(HMRCShopApp.APPLE, 1));
+        // Two apples, one free
+        assertEquals(new BigDecimal("0.60"),
+            ItemOffer.BUY_1_GET_1_FREE.calculateItemDiscount(HMRCShopApp.APPLE, 2));
+        // Three apples one free
+        assertEquals(new BigDecimal("0.60"),
+            ItemOffer.BUY_1_GET_1_FREE.calculateItemDiscount(HMRCShopApp.APPLE, 3));
+        // Four apples two free
+        assertEquals(new BigDecimal("1.20"),
+            ItemOffer.BUY_1_GET_1_FREE.calculateItemDiscount(HMRCShopApp.APPLE, 4));
+        // 1001 apples, 500 free
+        assertEquals(new BigDecimal("300.00"),
+            ItemOffer.BUY_1_GET_1_FREE.calculateItemDiscount(HMRCShopApp.APPLE, 1001));
 
     }
+
+    /**
+     *
+     */
+     public void test_THREE_FOR_TWO_DiscountOffer()
+     {
+        // One orange, no discount
+        assertEquals(new BigDecimal("0.00"),
+            ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 1));
+        assertEquals(new BigDecimal("0.00"),
+        // Two oranges, no discount
+            ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 2));
+        // Three oranges, one free
+        assertEquals(new BigDecimal("0.25"),
+            ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 3));
+        //...
+        // 276 Oranges, 92 free
+        assertEquals(new BigDecimal("23.00"),
+            ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 276));
+        assertEquals(new BigDecimal("23.00"),
+        // 277 Oranges, 92 free
+            ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 277));
+        // 278 Oranges, 92 free
+        assertEquals(new BigDecimal("23.00"),
+            ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 278));
+        // 279 Oranges, 93 free
+        assertEquals(new BigDecimal("23.25"),
+            ItemOffer.THREE_FOR_TWO.calculateItemDiscount(HMRCShopApp.ORANGE, 279));
+     }
+
 }

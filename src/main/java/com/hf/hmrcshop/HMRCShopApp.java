@@ -12,9 +12,9 @@ public class HMRCShopApp
 
     private static ArrayList<ShopItem> basket;
 
-    private static final ShopItem APPLE =
+    public static final ShopItem APPLE =
         new ShopItem("Apple", "juicy apple", new BigDecimal("0.60"));
-    private static final ShopItem ORANGE =
+    public static final ShopItem ORANGE =
         new ShopItem("Orange", "orange orange", new BigDecimal("0.25"));
 
     public static void main( String[] args )
