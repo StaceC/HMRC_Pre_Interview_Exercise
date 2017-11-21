@@ -7,5 +7,5 @@
 ## Running Tests
 
   ```
-  * mvn test
+  mvn test
   ```

@@ -43,4 +43,14 @@ public class HMRCShopTest
         assertEquals(expectedName, apple.getName());
         assertEquals(expectedPrice, apple.getPrice());
     }
+
+    /**
+     * Test that a new Till Receipt with no items has a total price of zero.
+     */
+    public void testEmptyTillReceipt()
+    {
+        BigDecimal expectedReceiptTotal = new BigDecimal("0.00");
+        TillReceipt receipt = new TillReceipt();
+        assertEquals(expectedReceiptTotal, receipt.calculateTotal());
+    }
 }
