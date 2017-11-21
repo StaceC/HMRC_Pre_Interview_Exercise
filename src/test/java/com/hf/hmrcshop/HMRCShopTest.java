@@ -177,12 +177,7 @@ public class HMRCShopTest
           receipt.addOffer(HMRCShopApp.ORANGE, ItemOffer.THREE_FOR_TWO);
           receipt.addOffer(HMRCShopApp.APPLE, ItemOffer.BUY_1_GET_1_FREE);
 
-          // Calculate discount price = total - discount
-          BigDecimal discountedTotal =
-              receipt.calculateTotal().subtract(receipt.calculateDiscount());
-
-          assertEquals(expectedTotal, discountedTotal);
-
+          assertEquals(expectedTotal, receipt.calculateDiscountedTotal());
 
       }
 

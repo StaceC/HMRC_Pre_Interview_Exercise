@@ -122,4 +122,13 @@ public class TillReceipt {
         return discount;
     }
 
+    /**
+     * Calculate discounted total based on item total minus discount total.
+     */
+    public BigDecimal calculateDiscountedTotal() {
+
+      return calculateTotal().subtract(calculateDiscount());
+
+    }
+
 }
