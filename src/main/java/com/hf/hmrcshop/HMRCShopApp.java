@@ -12,14 +12,20 @@ public class HMRCShopApp
 
     private static ArrayList<ShopItem> basket;
 
+    private static final ShopItem APPLE =
+        new ShopItem("Apple", "juicy apple", new BigDecimal("0.60"));
+    private static final ShopItem ORANGE =
+        new ShopItem("Orange", "orange orange", new BigDecimal("0.25"));
+
     public static void main( String[] args )
     {
         System.out.println( "\nHello Customer!\nApologies, your basket is hardcoded in the application currently.\n\n" );
         basket = new ArrayList<ShopItem>();
 
-        basket.add(new ShopItem("Apple", "juicy apple", new BigDecimal("0.30")));
-        basket.add(new ShopItem("Pear", "ripe pear", new BigDecimal("0.35")));
-        basket.add(new ShopItem("Orange", "orange orange", new BigDecimal("0.50")));
+        basket.add(APPLE);
+        basket.add(APPLE);
+        basket.add(ORANGE);
+        basket.add(APPLE);
 
         System.out.println("Your basket contains the following items:");
 
