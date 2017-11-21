@@ -36,6 +36,14 @@ public class HMRCShopApp
         TillReceipt receipt = new TillReceipt();
         receipt.addItems(basket);
 
-        System.out.println("\nThe total is £" + receipt.calculateTotal());
+        // Add offers
+        receipt.addOffer(APPLE, ItemOffer.BUY_1_GET_1_FREE);
+        receipt.addOffer(ORANGE, ItemOffer.THREE_FOR_TWO);
+
+        System.out.println("\nTotal cost is:\n£" + receipt.calculateTotal());
+        System.out.println("\nOffers value is:\n£" + receipt.calculateDiscount());
+        System.out.println("\nTotal is:\n£" + receipt.calculateDiscountedTotal());
+
+        System.out.println("\nHave a nice day :)\n\n");
     }
 }
