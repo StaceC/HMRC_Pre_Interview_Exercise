@@ -4,6 +4,9 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.math.BigDecimal;
+
+
 /**
  * Unit test for simple App.
  */
@@ -29,10 +32,15 @@ public class HMRCShopTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Test ShopItem Model.
      */
-    public void testApp()
+    public void testCreateShopItems()
     {
-        assertTrue( true );
+        String expectedName = "Apple";
+        BigDecimal expectedPrice = new BigDecimal("0.00");
+
+        ShopItem apple = new ShopItem(expectedName, expectedPrice);
+        assertEquals(expectedName, apple.getName());
+        assertEquals(expectedPrice, apple.getPrice());
     }
 }
